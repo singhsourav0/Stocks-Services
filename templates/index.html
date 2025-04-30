@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>AutoStocks</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+<!-- Favicons -->
+<link href="{{ url_for('static', filename='img/favicon.png') }}" rel="icon">
+<link href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/aos/aos.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="{{ url_for('index') }}" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="{{ url_for('static', filename='img/logo.png') }}" alt=""> -->
+        <h1 class="sitename">AutoStocks</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="{{ url_for('index') }}#pricing">Get Started</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
+              <div class="company-badge mb-4">
+              <i class="bi bi-gear-fill me-2 rotating-icon"></i>
+          Working for your Portfolio
+              </div>
+
+              <h1 class="mb-4"> 
+              Trends to Trades<br>
+              Let AI Handle It.<br>
+                <span class="accent-text">Get Weekly Insights</span>
+              </h1>
+
+              <p class="mb-4 mb-md-5">
+                Get detailed weekly stock insights delivered to your inbox! 
+                Our service tracks and analyzes your stocks over the Week, 
+                generating insightful reports with charts and graphs, all in a convenient PDF format every Sunday.
+              </p>
+
+              <div class="hero-buttons">
+                <a href="#pricing" class="btn btn-primary me-0 me-sm-2 mx-1">Get Started</a>
+                <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="btn btn-link mt-2 mt-sm-0 glightbox">
+                  <i class="bi bi-play-circle me-1"></i>
+                  Play Video
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
+              <img src="{{ url_for('static', filename='img/illustration-1.webp') }}" alt="Hero Image" class="img-fluid">
+            </div>
+          </div>
+        </div>
+
+        <div class="row stats-row gy-4 mt-5" data-aos="fade-up" data-aos-delay="500">
+          <div class="col-lg-3 col-md-6">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="bi bi-clipboard-check"></i>
+              </div>
+              <div class="stat-content">
+                <h4>Enter Stock</h4>
+                <p class="mb-0 d-block d-md-none">Submit your stock details.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 position-relative">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="bi bi-search"></i>
+              </div>
+              <div class="stat-content">
+                <h4>Scraping & Analysis</h4>
+                <p class="mb-0 d-block d-md-none">We fetch and analyze stock data.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="bi bi-lightbulb"></i>
+              </div>
+              <div class="stat-content">
+                <h4>AI-Powered Insights</h4>
+                <p class="mb-0 d-block d-md-none">AI generates stock insights.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="bi bi-envelope"></i>
+              </div>
+              <div class="stat-content">
+                <h4>Weekly Report</h4>
+                <p class="mb-0 d-block d-md-none">Receive weekly stock reports.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+    </section><!-- /Hero Section -->
+  
+
+
+
+  
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Pricing</h2>
+        <p>Pick the plan that works best for you Free or Standard.<br>  Just tell us what you’re into, subscribe, and you’re all set!.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-4 justify-content-center">
+          <!-- Basic Plan -->
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="pricing-card">
+              <h3>Basic Plan</h3>
+              <div class="price">
+                <span class="currency">$</span>
+                <span class="amount">0.0</span>
+                <span class="period">/ month</span>
+              </div>
+              <p class="description">Weekly report for one stock. No emergency alerts included.</p>
+
+              <h4>What's Included:</h4>
+              <ul class="features-list">
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+                  1 stock analysis
+                </li>
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+                  Weekly report summary
+                </li>
+              </ul>
+
+                <a href="{{ url_for('request') }}" class="btn btn-primary subscribe-btn">
+                Subscribe
+                <i class="bi bi-arrow-right"></i>
+                </a>
+
+                <style>
+                .subscribe-btn {
+                  transition: transform 0.3s ease, box-shadow 0.3s ease;
+                }
+
+                .subscribe-btn:hover {
+                  transform: scale(0.95);
+                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                }
+                </style>
+              </a>
+            </div>
+          </div>
+
+
+          <!-- Premium Plan -->
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="pricing-card popular">
+              <div class="popular-badge">Most Popular</div>
+              <h3>Standard Plan</h3>
+              <div class="price">
+                <span class="currency">$</span>
+                <span class="amount">0.99</span>
+                <span class="period">/ month</span>
+              </div>
+              <p class="description">Track up to 5 stocks with weekly reports and instant alerts on major buy/sell activity.</p>
+
+              <h4>What's Included:</h4>
+              <ul class="features-list">
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+                  Weekly insights for 5 stocks
+                </li>
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+                  Emergency trade alerts
+                </li>
+              </ul>
+
+              <a href="{{ url_for('prorequest') }}" class="btn btn-light subscribe-btn">
+                Subscribe
+                <i class="bi bi-arrow-right"></i>
+                <style>
+                .subscribe-btn {
+                  transition: transform 0.3s ease, box-shadow 0.3s ease;
+                }
+
+                .subscribe-btn:hover {
+                  transform: scale(0.95);
+                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                }
+                </style>
+              </a>
+            </div>
+          </div>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Pricing Section -->
+
+
+
+
+
+<section id="services" class="features-cards section" style="margin-top: 0;">
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Our Services</h2>
+    <p>Empowering part-time investors with simplified insights across key financial sectors</p>
+  </div><!-- End Section Title -->
+
+  <div class="container">
+    <div class="row gy-4">
+
+      <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+        <div class="feature-box orange">
+          <i class="bi bi-bar-chart-line"></i>
+          <h4>Stock Market</h4>
+          <p>Weekly trend forecasts and insights on top-performing stocks to help you stay ahead without daily tracking.</p>
+        </div>
+      </div><!-- End Feature Box-->
+
+      <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+        <div class="feature-box blue">
+          <i class="bi bi-currency-bitcoin"></i>
+          <h4>Cryptocurrency</h4>
+          <p>Track major crypto movements, volatility trends, and curated coin updates delivered in an easy-to-digest format.</p>
+        </div>
+      </div><!-- End Feature Box-->
+
+      <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+        <div class="feature-box green">
+          <i class="bi bi-graph-up-arrow"></i>
+          <h4>F&O Insights</h4>
+          <p>Understand derivatives better with simplified option chain analysis, top gainers, and contract trends every week.</p>
+        </div>
+      </div><!-- End Feature Box-->
+
+      <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+        <div class="feature-box red">
+          <i class="bi bi-piggy-bank"></i>
+          <h4>Mutual Funds</h4>
+          <p>Discover top-performing mutual funds, SIP opportunities, and tax-saving options designed for long-term growth.</p>
+        </div>
+      </div><!-- End Feature Box-->
+
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about section">
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row gy-4 align-items-center justify-content-between">
+
+      <div class="col-xl-5" data-aos="fade-up" data-aos-delay="200">
+        <span class="about-meta">MORE ABOUT US</span>
+        <h2 class="about-title">AI-Driven Insights for Smarter Investing</h2>
+        <p class="about-description">We utilize advanced machine learning and language processing to provide cutting-edge stock analysis, including trend predictions and concise summaries of daily market activities.</p>
+
+        <div class="row feature-list-wrapper">
+          <div class="col-md-6">
+            <ul class="feature-list">
+              <li><i class="bi bi-check-circle-fill"></i> Next Week stock price forecasting with AI models</li>
+              <li><i class="bi bi-check-circle-fill"></i> Live Twitter discussions around your selected stocks</li>
+              <li><i class="bi bi-check-circle-fill"></i> Track how US market and global news impact trends</li>
+            </ul>
+            
+          </div>
+          <div class="col-md-6">
+            <ul class="feature-list">
+              <li><i class="bi bi-check-circle-fill"></i> AI-powered reports summarizing market movements</li>
+              <li><i class="bi bi-check-circle-fill"></i> Daily insights on FII/DII trading behavior</li>
+              <li><i class="bi bi-check-circle-fill"></i> LLM-generated commentary for investor decisions</li>
+            </ul>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- Do not move or nest this block -->
+      <div class="col-xl-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="image-wrapper">
+          <div class="images position-relative" data-aos="zoom-out" data-aos-delay="400">
+            <img src="static/img/stocks.jpg" alt="Business Meeting" class="img-fluid main-image rounded-4">
+            <img src="static/img/stock.png" alt="Team Discussion" class="img-fluid small-image rounded-4">
+          </div>
+          <div class="experience-badge floating">
+            <h3>15+ <span>Years of</span></h3>
+            <p>Stocks Data insights</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info section moved closer to the upper portion -->
+      <div class="info-wrapper mt-2">
+        <div class="row gy-3"></div>
+          <div class="col-lg-5">
+        <div class="profile floating d-flex align-items-center" style="cursor: pointer;" onclick="window.location.href='https://linkedin.com/in/singhsourav0'">
+          <div style="width: 80px; height: 80px; box-shadow: 0 25px 21px rgba(0, 0, 0, 0.25); border-radius: 50%; overflow: hidden; border: 3px solid #007bff; display: flex; align-items: center; justify-content: center;">
+        <img src="static/img/sourav.jpg" alt="CEO Profile" class="profile-image" style="width: 100%; height: auto;">
+          </div>
+          <div class="ms-3">
+        <h4 class="profile-name mb-0">Sourav Kumar</h4>
+        <p class="profile-position mb-0">Developer</p>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+          </div>
+        </div>
+      </div>
+          </div>
+            <!-- <div class="contact-info d-flex align-items-center gap-2">
+              <i class="bi bi-telephone-fill"></i>
+              <div>
+                <p class="contact-label">Call us anytime</p>
+                <p class="contact-number">+123 456-789</p>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+
+    <!-- Faq Section -->
+
+          <section class="faq-9 faq section light-background" id="faq">
+            <div class="container">
+              <div class="row">
+          
+                <div class="col-lg-5" data-aos="fade-up">
+                  <h2 class="faq-title">Have a question? We’ve got answers.</h2>
+                  <p class="faq-description">From market movements to custom stock insights, explore how AutoStocks helps you stay ahead in the world of trading.</p>
+                    <div class="faq-arrow d-none d-lg-block" data-aos="fade-up" data-aos-delay="200">
+                    <svg class="faq-arrow" width="400" height="211" viewBox="0 0 400 211" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M398.804 194.488C389.279 189.596 379.529 185.52 369.407 182.07L369.384 182.049C369.227 181.994 369.07 181.939 368.912 181.884C366.669 181.139 365.906 184.546 367.669 185.615C374.053 189.473 382.761 191.837 389.146 195.695C356.603 195.912 319.781 196.591 291.266 179.049C262.522 161.368 248.109 130.695 256.934 98.891C284.554 98.7247 312.556 84.0176 329.508 62.667C336.396 53.9724 346.193 35.1448 329.773 30.2717C314.292 25.6624 293.711 41.8875 283.197 51.3147C270.111 63.039 259.63 78.433 254.204 95.0087C252.122 94.9842 250.078 94.8683 248.07 94.6608C230.18 92.8027 211.22 83.6338 205.449 65.1074C198.116 41.5699 214.499 19.0183 227.92 1.56641C228.641 0.625793 227.286 -0.561638 226.542 0.358501C213.459 16.4098 200.221 34.5242 200.897 56.5659C201.822 74.6941 214.221 87.9401 230.412 94.2058C237.708 97.0203 245.345 98.5003 253.033 98.8449C247.868 117.532 249.296 137.487 260.773 155.283C287.762 197.081 339.616 201.147 384.786 201.155L374.332 206.827C372.119 208.033 374.345 211.287 376.537 210.105C382.06 207.125 387.582 204.122 393.084 201.144C393.346 201.147 395.161 199.887 395.423 199.868C397.08 198.548 393.084 201.144 395.528 199.81C396.688 199.192 397.846 198.552 399.006 197.935C400.397 197.167 400.007 195.087 398.804 194.488ZM260.821 88.0427C267.689 72.648 278.854 59.1566 292.121 49.0388C298.848 43.9065 306.334 39.2953 314.188 36.1439C317.295 34.8947 320.798 33.6609 324.168 33.635C334.365 33.5511 336.354 42.9911 332.638 51.031C320.47 77.4222 286.864 93.9837 258.098 94.9666C258.897 92.6666 259.783 90.3603 260.821 88.0427Z" fill="currentColor"></path>
+                    </svg>
+                    </div>
+                  </div>
+                <div class="col-lg-7" data-aos="fade-up" data-aos-delay="300">
+                  <div class="faq-container">
+          
+                    <div class="faq-item faq-active">
+                      <h3>What is AutoStocks all about?</h3>
+                      <div class="faq-content">
+                        <p>AutoStocks is your go-to platform for smart, simplified stock market updates. We offer daily Nifty & Sensex stock shorts on YouTube and Instagram, along with custom weekly PDF reports tailored just for you.</p>
+                      </div>
+                      <i class="faq-toggle bi bi-chevron-right"></i>
+                    </div>
+          
+                    <div class="faq-item">
+                      <h3>What kind of content do you post daily?</h3>
+                      <div class="faq-content">
+                        <p>Every working day, we publish engaging stock market shorts covering Nifty and Sensex movements, major gainers/losers, and quick trade insights — all under 60 seconds, perfect for busy investors.</p>
+                      </div>
+                      <i class="faq-toggle bi bi-chevron-right"></i>
+                    </div>
+                    <div class="faq-item">
+                      <h3>Can I get insights on specific stocks I hold?</h3>
+                      <div class="faq-content">
+                        <p>Yes! Our platform can generate tailored summaries and analysis for the stocks in your personal portfolio using AI, helping you stay informed and confident in your investment decisions.</p>
+                      </div>
+                      <i class="faq-toggle bi bi-chevron-right"></i>
+                    </div>
+                    
+                    <div class="faq-item">
+                      <h3>Do you offer sentiment analysis for my selected stocks?</h3>
+                      <div class="faq-content">
+                        <p>Absolutely. We analyze social media buzz (like Twitter), news, and market sentiment around your chosen stocks and present it in a simplified, easy-to-read format — just for you.</p>
+                      </div>
+                      <i class="faq-toggle bi bi-chevron-right"></i>
+                    </div>
+                    
+                    <div class="faq-item">
+                      <h3>How personalized are the PDF reports?</h3>
+                      <div class="faq-content">
+                        <p>Our weekly PDFs aren’t generic — they include AI-curated recommendations, event-based insights, sentiment signals, and even sector-specific analysis based on your interests and portfolio.</p>
+                      </div>
+                      <i class="faq-toggle bi bi-chevron-right"></i>
+                    </div>
+                    
+                    <div class="faq-item">
+                      <h3>What are the personalized services you offer?</h3>
+                      <div class="faq-content">
+                        <p>We offer weekly stock recommendations and personalized insights via downloadable PDF reports — curated to match your goals, interests, and risk appetite.</p>
+                      </div>
+                      <i class="faq-toggle bi bi-chevron-right"></i>
+                    </div>
+          
+                    <div class="faq-item">
+                      <h3>Where can I follow your updates?</h3>
+                      <div class="faq-content">
+                        <p>Follow us on <strong>YouTube</strong> and <strong>Instagram</strong> under the handle <em>@autostocks</em> for consistent and easy-to-understand stock updates. Your daily dose of market wisdom — right in your feed!</p>
+                      </div>
+                      <i class="faq-toggle bi bi-chevron-right"></i>
+                    </div>
+          
+                  </div>
+                </div>
+          
+              </div>
+            </div>
+
+
+            <script>
+              document.querySelectorAll('.faq-item').forEach(item => {
+                item.addEventListener('click', () => {
+                  // Close all items
+                  document.querySelectorAll('.faq-item').forEach(el => {
+                    if (el !== item) el.classList.remove('faq-active');
+                  });
+            
+                  // Toggle the clicked item
+                  item.classList.toggle('faq-active');
+                });
+              });
+            </script>
+            
+          </section>
+          
+  </main>
+
+  <footer id="footer" class="footer bg-dark text-light pt-4 pb-2">
+
+    <div class="container footer-top">
+      <div class="row gy-4 align-items-center">
+        
+        <!-- About Section -->
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center text-white">
+            <span class="sitename fw-bold fs-4">AutoStocks</span>
+          </a>
+          <div class="footer-contact pt-2 small">
+            <p class="mb-1">Patna</p>
+            <p class="mb-1">Bihar, India</p>
+            <p class="mt-2 mb-1"><strong>Phone:</strong> <span>+91 6205208204</span></p>
+            <p><strong>Email:</strong> <span>autostocks.ai@gmail.com</span></p>
+          </div>
+        </div>
+  
+        <!-- Quick Links -->
+        <div class="col-lg-4 col-md-6 footer-links">
+          <h5 class="text-white fs-5">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#about" class="text-light text-decoration-none">About</a></li>
+            <li><a href="#" class="text-light text-decoration-none">Features</a></li>
+            <li><a href="#pricing" class="text-light text-decoration-none">Pricing</a></li>
+            <li><a href="#services" class="text-light text-decoration-none">Services</a></li>
+          </ul>
+        </div>
+  
+        <!-- Market Tools -->
+        <div class="col-lg-4 col-md-6 footer-links">
+          <h5 class="text-white fs-5">Market Tools</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-light text-decoration-none">Crypto Tracker</a></li>
+            <li><a href="#" class="text-light text-decoration-none">Stock Screener</a></li>
+            <li><a href="#" class="text-light text-decoration-none">F&O Analyzer</a></li>
+            <li><a href="#" class="text-light text-decoration-none">Mutual Fund Insights</a></li>
+          </ul>
+        </div>
+  
+      </div>
+    </div>
+  
+    <div class="container text-center mt-3">
+      <div class="social-links d-flex justify-content-center gap-3">
+        <a href="#" class="text-light fs-4"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="text-light fs-4"><i class="bi bi-linkedin"></i></a>
+        <a href="#" class="text-light fs-4"><i class="bi bi-github"></i></a>
+        <a href="#" class="text-light fs-4"><i class="bi bi-youtube"></i></a>
+        <a href="#" class="text-light fs-4"><i class="bi bi-instagram"></i></a>
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-3">
+      <p class="mb-0 fs-6">© <span>Copyright</span> <strong class="px-1 sitename">AutoStocks</strong> <span> All rights reserved</span></p>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+  <i class="bi bi-arrow-up-short"></i>
+</a>
+
+<!-- Vendor JS Files -->
+<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/php-email-form/validate.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/aos/aos.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/purecounter/purecounter_vanilla.js') }}"></script>
+
+<!-- Main JS File -->
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+
+</body>
+
+</html>
