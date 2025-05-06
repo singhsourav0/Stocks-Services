@@ -2,3 +2,6 @@ Flask
 psycopg2-binary
 python-dotenv
 gunicorn
+pandas_market_calendars
+nselib
+requests

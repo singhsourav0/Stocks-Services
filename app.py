@@ -1,14 +1,22 @@
 # --- app.py ---
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import psycopg2
 import smtplib
 from email.message import EmailMessage
 import os
 from dotenv import load_dotenv
 import traceback
-
+import pickle
 load_dotenv()
 app = Flask(__name__)
+
+with open("data/dropdown_data.pkl", "rb") as f:
+    stocks =  pickle.load(f)
+with open("data/crypto_dropdown_data.pkl", "rb") as f:
+    crypto =  pickle.load(f)
+
+with open("data/mutual_dropdown_data.pkl", "rb") as f:
+    mutual =  pickle.load(f)
 
 # Connect to PostgreSQL
 def get_db_connection():
@@ -30,7 +38,8 @@ def create_users_table():
             name VARCHAR(100),
             email VARCHAR(100) PRIMARY KEY,
             phoneno VARCHAR(100),
-            Stocks VARCHAR(100)
+            Stocks VARCHAR(100) ,
+            category VARCHAR(100)
         );
     ''')
     conn.commit()
@@ -48,8 +57,12 @@ def index():
     return render_template('prorequest.html')
 
 
+
+
+# print(stocks)
 @app.route('/request', methods=['GET', 'POST'], endpoint='request')
 def request_page():
+    # POST method to handle form submission
     if request.method == 'POST':
         try:
             name = request.form['name']
@@ -58,44 +71,52 @@ def request_page():
             category = request.form['category']
             item = request.form['Item']
 
-            stocks = f"{category} - {item}"
-
+            selected_item = item  
             conn = get_db_connection()
             cur = conn.cursor()
 
-            # Check if email already exists
             cur.execute("SELECT * FROM users WHERE email = %s", (email,))
             existing_user = cur.fetchone()
 
             if existing_user:
-                # Update existing record
-                cur.execute(
-                    "UPDATE users SET stocks = %s WHERE email = %s",
-                    (stocks, email)
-                )
-                conn.commit()
-                message = f"Account exists. Updated your preferences to {stocks}, Now you will get updated Weakly for {stocks}."
-                send_email(name, email, stocks, is_new_user=False)
+                cur.execute("UPDATE users SET stocks = %s, category = %s WHERE email = %s", (selected_item, category, email))
+                message = f"Account exists. Updated your preferences to {selected_item}."
+                send_email(name, email, selected_item, is_new_user=False)
+                status = "updated"
             else:
-                # Insert new user
-                cur.execute(
-                    "INSERT INTO users (name, email, phoneno, stocks) VALUES (%s, %s, %s, %s)",
-                    (name, email, phone, stocks)
-                )
-                conn.commit()
-                message = f"Thank you {name}! You subscribed for {stocks}, your info is saved and working for you."
-                send_email(name, email, stocks, is_new_user=True)
+                cur.execute("INSERT INTO users (name, email, phoneno, stocks, category) VALUES (%s, %s, %s, %s, %s)",
+                            (name, email, phone, selected_item, category))
+                message = f"Thank you {name}! You subscribed for {selected_item}."
+                status = "subscribed"
 
+            conn.commit()
             cur.close()
             conn.close()
 
-            return render_template('request.html', message=message)
+            return jsonify({"status": status, "message": message})
 
         except Exception as e:
             print("Error:", e)
-            return render_template('request.html', message="An error occurred. Please try again.")
+            return jsonify({"status": "error", "message": "An error occurred. Please try again."})
 
-    return render_template('request.html')
+    # ✅ This now correctly uses the global stocks and crypto
+    return render_template("request.html", stocks=stocks, crypto=crypto,  mutual=mutual)
+
+@app.route('/get-items')
+def get_items():
+    category = request.args.get('category', 'Stocks').lower()
+    term = request.args.get('term', '').lower()
+
+    if category == 'crypto':
+        options = crypto
+
+    elif category == 'mutual':
+        options = mutual
+    else:
+        options = stocks
+
+    matched = [opt for opt in options if term in opt.lower()]
+    return jsonify([{'id': opt, 'text': opt} for opt in matched[:50]])
 
 
 # Email sender
